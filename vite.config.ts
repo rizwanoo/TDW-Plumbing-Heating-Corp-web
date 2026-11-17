@@ -9,6 +9,23 @@ export default defineConfig(() => {
     plugins: [
       react(),
       tailwindcss(),
+      {
+        name: 'vercel-og-image-origin',
+        transformIndexHtml(html: string): string {
+          const host =
+            process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+            process.env.VERCEL_BRANCH_URL ||
+            process.env.VERCEL_URL ||
+            '';
+          if (!host) {
+            return html;
+          }
+          const origin = host.startsWith('http') ? host : `https://${host}`;
+          return html
+            .replace('content="/og-share.jpg"', `content="${origin}/og-share.jpg"`)
+            .replace('content="/og-share.jpg"', `content="${origin}/og-share.jpg"`);
+        },
+      },
       // Copies src/assets into dist/ so root-relative URLs like
       // "/src/assets/images/..." (e.g. generate_image output) still resolve
       // in production builds. Do not remove.
