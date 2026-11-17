@@ -1,0 +1,6 @@
+{
+  "name": "TDW Plumbing & Heating Corp.",
+  "description": "Full-service licensed and insured plumbing and heating contractor serving Athol, Orange, Gardner, Amherst, and Central Massachusetts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
